@@ -10,12 +10,12 @@ public class Place {
 
     private Position geo_position;
 
-    public int get_id() {
+    public int getId() {
         return _id;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
+    public void setId(int id) {
+        this._id = id;
     }
 
     public String getType() {
@@ -26,12 +26,12 @@ public class Place {
         this.type = type;
     }
 
-    public Position getGeo_position() {
+    public Position getGeoPosition() {
         return geo_position;
     }
 
-    public void setGeo_position(Position geo_position) {
-        this.geo_position = geo_position;
+    public void setGeoPosition(Position geoPosition) {
+        this.geo_position = geoPosition;
     }
 
     public String getName() {
