@@ -1,5 +1,6 @@
 package com.places.client.formatter.csv;
 
+import com.googlecode.jcsv.CSVStrategy;
 import com.googlecode.jcsv.writer.CSVWriter;
 import com.googlecode.jcsv.writer.internal.CSVWriterBuilder;
 import com.places.client.model.Place;
@@ -12,14 +13,18 @@ import java.util.List;
 public class CSVFileWriter {
 
     public void write(File file, List<Place> places) throws IOException {
-        PrintWriter pw = new PrintWriter(file);
-        CSVFormatter entryConverter = new CSVFormatter();
-        CSVWriterBuilder<Place> builder = new CSVWriterBuilder(pw);
+        try (PrintWriter pw = new PrintWriter(file)) {
 
-        CSVWriter<Place> csvWriter = builder.entryConverter(entryConverter).build();
+            CSVFormatter entryConverter = new CSVFormatter();
+            CSVStrategy strategy = new CSVStrategy(',', '"', '#', true, true);
 
-        csvWriter.writeAll(places);
-        csvWriter.flush();
-        csvWriter.close();
+            CSVWriterBuilder<Place> builder = new CSVWriterBuilder(pw);
+            builder.entryConverter(entryConverter);
+            builder.strategy(strategy);
+
+            try (CSVWriter<Place> csvWriter = builder.build()) {
+                csvWriter.writeAll(places);
+            }
+        }
     }
 }
