@@ -15,7 +15,7 @@ $ java -jar bin/GoEuroTest.jar SEARCH_PHRASE
 ## Example:
 ~~~bash
 $ java -jar bin/GoEuroTest.jar BERLIN
-$ cat cat out.csv
+$ cat out.csv
 376217,Berlin,location,52.52437,13.41053
 448103,Berlingo,location,45.50298,10.04366
 425332,Berlingerode,location,51.45775,10.2384
